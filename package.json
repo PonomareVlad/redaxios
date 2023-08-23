@@ -1,6 +1,6 @@
 {
-  "name": "redaxios",
-  "version": "0.5.1",
+  "name": "@ponomarevlad/redaxios",
+  "version": "0.5.1-fix.2",
   "description": "The API from Axios, as a tiny abstraction over Fetch.",
   "source": "src/index.js",
   "main": "dist/redaxios.js",
