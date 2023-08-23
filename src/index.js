@@ -135,6 +135,11 @@ function create(defaults) {
 			const value = /** @type {any} */ (overrides)[i];
 			out[key] = key in out && typeof value == 'object' ? deepMerge(out[key], value, key == 'headers') : value;
 		}
+		for (i in out) {
+			if (typeof out[i] == 'undefined') {
+				delete out[i];
+			}
+		}
 		return out;
 	}
 
