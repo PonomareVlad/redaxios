@@ -133,7 +133,7 @@ function create(defaults) {
 		for (i in overrides) {
 			const key = lowerCase ? i.toLowerCase() : i;
 			const value = /** @type {any} */ (overrides)[i];
-			out[key] = key in out && typeof value == 'object' ? deepMerge(out[key], value, key == 'headers') : value;
+			out[key] = typeof value == 'object' ? deepMerge(key in out ? out[key] : {}, value, key == 'headers') : value;
 		}
 		for (i in out) {
 			if (typeof out[i] == 'undefined') {
@@ -186,7 +186,8 @@ function create(defaults) {
 				// @ts-ignore accessing match()[2] throws for no match, which is intentional
 				document.cookie.match(RegExp('(^|; )' + options.xsrfCookieName + '=([^;]*)'))[2]
 			);
-		} catch (e) {}
+		} catch (e) {
+		}
 
 		if (options.baseURL) {
 			url = url.replace(/^(?!.*\/\/)\/?/, options.baseURL + '/');
